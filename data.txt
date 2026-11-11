@@ -1,0 +1,1 @@
+GitHub Actions automates software workflows. Docker packages applications into portable containers. This file is analysed for vowel frequency every time code is pushed.
