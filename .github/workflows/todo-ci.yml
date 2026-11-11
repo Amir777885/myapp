@@ -1,1 +1,16 @@
-
+name: CI Workflow - Docker
+on: { push: { branches: [ main ] } }
+permissions: { contents: write }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build Docker image
+        run: docker build -f Dockerfile.todo -t task-manager:latest .
+      - name: Run Docker container
+        run: docker run --rm -e GITHUB_USER="${{ github.actor }}" -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -e GITHUB_REPOSITORY=${{ github.repository }} task-manager:latest
