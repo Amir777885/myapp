@@ -1,1 +1,2 @@
 Feature notes for the task manager 
+More notes for the task manager 
