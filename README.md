@@ -7,3 +7,8 @@ my demo app
 - Contributor: Amir777885
 - Timestamp: 2026-11-11 10:54:25
 - Result: {'a': 12, 'e': 16, 'i': 11, 'o': 13, 'u': 4}
+
+### Vowel Frequency Analysis
+- Contributor: Amir777885
+- Timestamp: 2026-11-11 10:55:15
+- Result: {'a': 14, 'e': 17, 'i': 13, 'o': 14, 'u': 4}
