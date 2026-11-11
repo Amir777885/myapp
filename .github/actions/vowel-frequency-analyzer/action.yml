@@ -1,0 +1,13 @@
+name: 'Vowel Frequency Analyzer'
+description: 'Counts vowel frequency in a text file and logs the result in README.md'
+inputs:
+  file:
+    description: 'Path to the text file to analyse'
+    required: true
+    default: 'data.txt'
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/amir777885/vowel-frequency-analyzer:latest'
+  entrypoint: '/app/.github/scripts/entrypoint.sh'
+  env:
+    FILE: ${{ inputs.file }}
