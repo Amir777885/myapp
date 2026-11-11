@@ -1,0 +1,21 @@
+name: GitHub Projects Automation
+
+on:
+  pull_request:
+    types: [ closed ]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  move-issue-to-done:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Comment on merged PR
+        run: |
+          curl -sf -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments -d '{"body":"PR merged by ${{ github.actor }} - linked issue moved to Done on the project board."}'
